@@ -9,6 +9,6 @@ class SchedulerController < ApplicationController
   def sessions
     raise ActionController::RoutingError.new('Not Found') unless current_user.is_admin?
 
-    @presentations = Presentation.includes(:users).load.sort{|p| p.users.size}.reverse
+    @presentations = Presentation.includes(:users).load.sort_by{|p| p.users.size}.reverse
   end
 end
